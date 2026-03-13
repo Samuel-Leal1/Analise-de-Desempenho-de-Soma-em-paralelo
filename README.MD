@@ -59,8 +59,10 @@ Módulo multiprocessing do Python utilizado para criação e gerenciamento dos p
 A divisão do arquivo foi feita por posição de bytes com alinhamento em quebras de linha para evitar cortes em números.
 
 
-4. Resultados Experimentais
-4.1 numero1.txt — 1 milhão de números (Soma: -88)
+## 4. Resultados Experimentais
+
+### 4.1 numero1.txt — 1 milhão de números (Soma: -88)
+
 | Threads/Processos | Tempo (s) | Speedup | Eficiência |
 |:-----------------:|:---------:|:-------:|:----------:|
 | 1 (serial)        | 0.091277  | 1.0000  | 1.0000     |
@@ -69,7 +71,8 @@ A divisão do arquivo foi feita por posição de bytes com alinhamento em quebra
 | 8                 | 0.145154  | 0.6289  | 0.0786     |
 | 12                | 0.167955  | 0.5435  | 0.0453     |
 
-4.2 numero2.txt — 10 milhões de números (Soma: 5384)
+### 4.2 numero2.txt — 10 milhões de números (Soma: 5384)
+
 | Threads/Processos | Tempo (s) | Speedup | Eficiência |
 |:-----------------:|:---------:|:-------:|:----------:|
 | 1 (serial)        | 0.914836  | 1.0000  | 1.0000     |
