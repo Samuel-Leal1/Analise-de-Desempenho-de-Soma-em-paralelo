@@ -5,17 +5,19 @@ Aluno(s): Samuel Leal de Araujo
 Professor: Rafael Marconi Ramos
 Data: 13/03/2026
 
-1. Descrição do Problema
-O problema consiste em calcular a soma de todos os valores inteiros armazenados em um arquivo de texto, onde cada linha contém um único número inteiro (positivo ou negativo). O objetivo é implementar e comparar versões serial e paralela deste processamento, avaliando os ganhos de desempenho obtidos com a paralelização.
-Algoritmo utilizado:
+## 1. Descrição do Problema
 
-Versão serial: leitura linha a linha do arquivo com acumulação sequencial da soma.
-Versão paralela: divisão do arquivo em N fatias por posição de bytes (byte-range splitting), processamento simultâneo de cada fatia em um processo separado e redução final somando os resultados parciais.
+Calcular a soma de todos os inteiros de um arquivo de texto (um número por linha), comparando as versões serial e paralela.
 
-Tamanhos de entrada utilizados:
+**Algoritmo utilizado:**
+- **Serial:** leitura linha a linha com acumulação sequencial
+- **Paralelo:** divisão do arquivo em N fatias por bytes, processamento simultâneo e soma dos resultados parciais
 
-numero1.txt — 1.000.000 de números inteiros (fase de desenvolvimento)
-numero2.txt — 10.000.000 de números inteiros (fase de análise de desempenho)
+**Entradas utilizadas:**
+- `numero1.txt` — 1.000.000 de números (desenvolvimento)
+- `numero2.txt` — 10.000.000 de números (análise de desempenho)
+
+**Complexidade:** O(n) serial — O(n/p) por processo na versão paralela
 
 Objetivo da paralelização:
 Reduzir o tempo de leitura e processamento do arquivo distribuindo a carga entre múltiplos processos, aproveitando os núcleos disponíveis no processador. O gargalo principal é a leitura sequencial de disco, que pode ser aliviada com leitura paralela em diferentes regiões do arquivo.
