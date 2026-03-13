@@ -23,7 +23,16 @@ Complexidade aproximada do algoritmo:
 O(n) — linear em relação ao número de linhas do arquivo, tanto na versão serial quanto na paralela. Na versão paralela, a complexidade por processo é O(n/p), onde p é o número de processos.
 
 2. Ambiente Experimental
-ItemDescriçãoProcessadorIntel Core i5-12500 (12ª Geração)Número de núcleos12 núcleos lógicos (6 P-cores + 4 E-cores)Memória RAM16 GBSistema OperacionalWindows 11Linguagem utilizadaPython 3.14Biblioteca de paralelizaçãomultiprocessing (módulo padrão do Python)Versão do interpretadorPython 3.14 (CPython)
+| Item | Descrição |
+|------|-----------|
+| Processador | Intel Core i5-12500 (12ª Geração) |
+| Número de núcleos | 12 núcleos lógicos (6 P-cores + 4 E-cores) |
+| Memória RAM | 16 GB |
+| Sistema Operacional | Windows 11 |
+| Linguagem utilizada | Python 3.14 |
+| Biblioteca de paralelização | multiprocessing (módulo padrão do Python) |
+| Versão do interpretador | Python 3.14 (CPython) |
+
 
 3. Metodologia de Testes
 Medição do tempo:
@@ -52,9 +61,22 @@ A divisão do arquivo foi feita por posição de bytes com alinhamento em quebra
 
 4. Resultados Experimentais
 4.1 numero1.txt — 1 milhão de números (Soma: -88)
-Threads/ProcessosTempo (s)SpeedupEficiência1 (serial)0.0912771.00001.000020.1593020.57300.286540.1267280.72020.180080.1451540.62890.0786120.1679550.54350.0453
+| Threads/Processos | Tempo (s) | Speedup | Eficiência |
+|:-----------------:|:---------:|:-------:|:----------:|
+| 1 (serial)        | 0.091277  | 1.0000  | 1.0000     |
+| 2                 | 0.159302  | 0.5730  | 0.2865     |
+| 4                 | 0.126728  | 0.7202  | 0.1800     |
+| 8                 | 0.145154  | 0.6289  | 0.0786     |
+| 12                | 0.167955  | 0.5435  | 0.0453     |
+
 4.2 numero2.txt — 10 milhões de números (Soma: 5384)
-Threads/ProcessosTempo (s)SpeedupEficiência1 (serial)0.9148361.00001.000020.7877041.16150.580840.5820521.57170.392980.5041091.81480.2269120.4786601.91120.1593
+| Threads/Processos | Tempo (s) | Speedup | Eficiência |
+|:-----------------:|:---------:|:-------:|:----------:|
+| 1 (serial)        | 0.914836  | 1.0000  | 1.0000     |
+| 2                 | 0.787704  | 1.1615  | 0.5808     |
+| 4                 | 0.582052  | 1.5717  | 0.3929     |
+| 8                 | 0.504109  | 1.8148  | 0.2269     |
+| 12                | 0.478660  | 1.9112  | 0.1593     |
 
 5. Cálculo de Speedup e Eficiência
 Speedup:
@@ -99,3 +121,5 @@ Pré-carregar o arquivo em memória antes de dividir entre processos.
 Testar com numerogigante.txt (1 bilhão de números), onde os ganhos seriam muito mais expressivos.
 
 Conclui-se que a eficácia do paralelismo depende diretamente do tamanho da entrada, da natureza do gargalo (CPU vs. I/O) e do custo de coordenação entre processos.
+
+
