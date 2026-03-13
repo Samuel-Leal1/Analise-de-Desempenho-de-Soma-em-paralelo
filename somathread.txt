@@ -1,0 +1,71 @@
+==================================================
+  SOMA PARALELA — 2 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero1.txt
+CPUs disp.: 12
+Processando...
+Soma total:             -88
+Tempo de processamento: 0.159302 segundos
+==================================================
+  SOMA PARALELA — 4 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero1.txt
+CPUs disp.: 12
+Processando...
+Soma total:             -88
+Tempo de processamento: 0.126728 segundos
+==================================================
+  SOMA PARALELA — 8 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero1.txt
+CPUs disp.: 12
+Processando...
+Soma total:             -88
+Tempo de processamento: 0.145154 segundos
+==================================================
+  SOMA PARALELA — 12 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero1.txt
+CPUs disp.: 12
+Processando...
+Soma total:             -88
+Tempo de processamento: 0.167955 segundos
+
+
+
+agora do arquivo 2 deu
+
+
+
+==================================================
+  SOMA PARALELA — 2 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero2.txt
+CPUs disp.: 12
+Processando...
+Soma total:             5384
+Tempo de processamento: 0.787704 segundos
+==================================================
+  SOMA PARALELA — 4 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero2.txt
+CPUs disp.: 12
+Processando...
+Soma total:             5384
+Tempo de processamento: 0.582052 segundos
+==================================================
+  SOMA PARALELA — 8 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero2.txt
+CPUs disp.: 12
+Processando...
+Soma total:             5384
+Tempo de processamento: 0.504109 segundos
+==================================================
+  SOMA PARALELA — 12 THREADS
+==================================================
+Arquivo:    C:\Users\aluno\Documents\Visual Studio 2017\numero2.txt
+CPUs disp.: 12
+Processando...
+Soma total:             5384
+Tempo de processamento: 0.478660 segundos
