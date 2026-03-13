@@ -22,7 +22,8 @@ Reduzir o tempo de leitura e processamento do arquivo distribuindo a carga entre
 Complexidade aproximada do algoritmo:
 O(n) — linear em relação ao número de linhas do arquivo, tanto na versão serial quanto na paralela. Na versão paralela, a complexidade por processo é O(n/p), onde p é o número de processos.
 
-2. Ambiente Experimental
+## 2. Ambiente Experimental
+
 | Item | Descrição |
 |------|-----------|
 | Processador | Intel Core i5-12500 (12ª Geração) |
