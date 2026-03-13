@@ -1,9 +1,17 @@
-Relatório de Computação Paralela
-Soma Paralela de Números em Arquivo
-Disciplina: Computação Paralela e Distribuída
-Aluno(s): Samuel Leal de Araujo
-Professor: Rafael Marconi Ramos
-Data: 13/03/2026
+# Relatório de Computação Paralela
+
+## Soma Paralela de Números em Arquivo
+
+---
+
+| Campo      | Informação                        |
+|------------|-----------------------------------|
+| Disciplina | Computação Paralela e Distribuída |
+| Aluno      | Samuel Leal de Araujo             |
+| Professor  | Rafael Marconi Ramos              |
+| Data       | 13/03/2026                        |
+
+---
 
 ## 1. Descrição do Problema
 
