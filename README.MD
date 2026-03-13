@@ -82,48 +82,55 @@ A divisão do arquivo foi feita por posição de bytes com alinhamento em quebra
 | 8                 | 0.504109  | 1.8148  | 0.2269     |
 | 12                | 0.478660  | 1.9112  | 0.1593     |
 
-5. Cálculo de Speedup e Eficiência
-Speedup:
-Speedup(p)=T(1)T(p)Speedup(p) = \frac{T(1)}{T(p)}Speedup(p)=T(p)T(1)​
+## 5. Cálculo de Speedup e Eficiência
+
+**Speedup:** `Speedup(p) = T(1) / T(p)`
+
 Onde T(1) é o tempo da execução serial e T(p) é o tempo com p threads/processos.
-Eficiência:
-Eficiencia(p)=Speedup(p)pEficiência(p) = \frac{Speedup(p)}{p}Eficiencia(p)=pSpeedup(p)​
+
+**Eficiência:** `Eficiência(p) = Speedup(p) / p`
+
 Onde p é o número de threads ou processos.
 
-6. Análise dos Resultados
-6.1 numero1.txt (1 milhão de números)
-Com o arquivo de 1 milhão de números, o tempo serial foi de 0,091 segundos — extremamente baixo. A versão paralela apresentou desempenho inferior ao serial em todas as configurações, com speedup abaixo de 1. Isso demonstra que, para entradas pequenas, o overhead de criação dos processos supera qualquer ganho de processamento paralelo. Este comportamento é esperado e confirma que paralelismo só é vantajoso quando o volume de trabalho é suficientemente grande para amortizar os custos de coordenação.
-6.2 numero2.txt (10 milhões de números)
-Com 10 milhões de números, o tempo serial foi de 0,914 segundos e a versão com 12 threads reduziu para 0,478 segundos, resultando em speedup de 1,91. O ganho cresceu de forma consistente de 2 para 12 threads, ainda que de maneira sub-linear.
-Análise do Speedup:
+---
 
-O speedup foi positivo e crescente, mas muito abaixo do ideal (speedup ideal com 12 threads seria 12).
-O principal gargalo é a leitura do disco: a largura de banda de I/O é compartilhada entre os processos, limitando o ganho real.
-A Lei de Amdahl se aplica: parte do trabalho é inerentemente serial, limitando o speedup máximo alcançável.
+## 6. Análise dos Resultados
 
-Análise da Eficiência:
+### 6.1 numero1.txt (1 milhão de números)
 
-Com 2 threads: eficiência de 0,5808 (58%) — relativamente boa.
-Com 4 threads: eficiência de 0,3929 (39%) — queda significativa.
-Com 8 threads: eficiência de 0,2269 (23%) — processos extras contribuem pouco.
-Com 12 threads: eficiência de 0,1593 (16%) — overhead de paralelização domina.
+Com 1 milhão de números, o tempo serial foi de 0,091 segundos. A versão paralela foi **mais lenta que o serial** em todas as configurações — o overhead de criação dos processos supera o ganho. Paralelismo só é vantajoso quando o volume de trabalho é grande o suficiente para amortizar os custos de coordenação.
 
-Causas da perda de eficiência:
+### 6.2 numero2.txt (10 milhões de números)
 
-Contenção de I/O: múltiplos processos competindo pelo mesmo disco.
-Overhead de criação e destruição do pool de processos (multiprocessing.Pool).
-Custo de comunicação entre processos via IPC (Inter-Process Communication).
-O número de threads (12) excede o número de P-cores físicos (6), introduzindo contenção adicional.
+Com 10 milhões de números, o tempo serial foi 0,914s e com 12 threads caiu para 0,478s, resultando em **speedup de 1,91**. O ganho cresceu consistentemente de 2 para 12 threads, mas de forma sub-linear.
 
+**Análise do Speedup:**
+- Positivo e crescente, mas muito abaixo do ideal (ideal seria 12 com 12 threads)
+- Gargalo principal: leitura do disco compartilhada entre os processos
+- A **Lei de Amdahl** limita o speedup máximo pois parte do trabalho é inerentemente serial
 
-7. Conclusão
-O experimento demonstrou que a paralelização traz ganhos reais para arquivos grandes, mas com limitações. Para 1 milhão de números o paralelismo foi contraproducente; para 10 milhões houve melhora consistente, atingindo speedup de 1,91 com 12 processos.
-O melhor custo-benefício foi com 2 threads (eficiência de 58%). Para melhorar os resultados futuras implementações poderiam:
+**Análise da Eficiência:**
+- 2 threads: **58%** — relativamente boa
+- 4 threads: **39%** — queda significativa
+- 8 threads: **23%** — processos extras contribuem pouco
+- 12 threads: **16%** — overhead de paralelização domina
 
-Utilizar numpy para leitura e soma vetorizada.
-Pré-carregar o arquivo em memória antes de dividir entre processos.
-Testar com numerogigante.txt (1 bilhão de números), onde os ganhos seriam muito mais expressivos.
+**Causas da perda de eficiência:**
+- Contenção de I/O: múltiplos processos competindo pelo mesmo disco
+- Overhead de criação/destruição do `multiprocessing.Pool`
+- Custo de comunicação entre processos via IPC
+- 12 threads excede os 6 P-cores físicos, introduzindo contenção adicional
 
-Conclui-se que a eficácia do paralelismo depende diretamente do tamanho da entrada, da natureza do gargalo (CPU vs. I/O) e do custo de coordenação entre processos.
+---
 
+## 7. Conclusão
+
+Para 1 milhão de números o paralelismo foi contraproducente; para 10 milhões houve melhora consistente, atingindo **speedup de 1,91 com 12 processos**. O melhor custo-benefício foi com **2 threads** (eficiência de 58%).
+
+Melhorias possíveis:
+- Usar `numpy` para leitura e soma vetorizada
+- Pré-carregar o arquivo em memória antes de dividir entre processos
+- Testar com `numerogigante.txt` (1 bilhão de números), onde os ganhos seriam muito mais expressivos
+
+A eficácia do paralelismo depende do tamanho da entrada, da natureza do gargalo (CPU vs. I/O) e do custo de coordenação entre processos.
 
